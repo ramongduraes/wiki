@@ -13,7 +13,7 @@
 
 * DApp: http://alpha.singularitynet.io
 * Kovan Registry Address: [0x2e4b2f2b72402b9b2d6a7851e37c856c329afe38](https://kovan.etherscan.io/address/0x2e4b2f2b72402b9b2d6a7851e37c856c329afe38)
-* Kovan MultiPartyEscrow Address: [0xdd4292864063d0da1f294ac65d74d55a44f4766c]((https://kovan.etherscan.io/address/0x2e4b2f2b72402b9b2d6a7851e37c856c329afe38))
+* Kovan MultiPartyEscrow Address: [0xdd4292864063d0da1f294ac65d74d55a44f4766c](https://kovan.etherscan.io/address/0xdd4292864063d0da1f294ac65d74d55a44f4766c)
 
 ## Community
 
