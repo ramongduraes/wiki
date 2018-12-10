@@ -1,6 +1,6 @@
 # Overview
 
-Service metadata is the off-chain descrition of SingularityNET service.
+Service metadata is the off-chain description of SingularityNET service.
 In order to use a SingularityNet service client need to know.
 
 * Address of MultiPartyEscrow contract
@@ -18,9 +18,9 @@ There are three ways of providing this metadata to the clients and the daemons.
 ### Security notes
 
 There are two important security notes.
-* The client shoudn't use mpe_address from metadata as a solely source of MultiPartyEscrow contract address. 
+* The client shouldn't use mpe_address from metadata as a solely source of MultiPartyEscrow contract address. 
   But he should check that its mpe_address corresponds to the mpe_address in metadata (cross validation of MultiPartyEscrow contract address)
-* The client should check that hash of metadata correspond to IPFS hash, overwise the client can be attacked if ipfs client is compromised.
+* The client should check that hash of metadata correspond to IPFS hash, otherwise the client can be attacked if ipfs client is compromised.
 
 ### Format of metadata
 
@@ -50,7 +50,7 @@ There are two important security notes.
 #                   for example service provider can use region name as group name
 #      group_name - unique name of the group (human readable)
 #      group_id   - unique id of the group (random 32 byte string in base64 encoding)
-#      payment_address - Ethereum address to recieve payments
+#      payment_address - Ethereum address to receive payments
 #
 #endpoints[] - address in the off-chain network to provide a service
 #      group_name 

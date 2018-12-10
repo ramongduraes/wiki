@@ -12,8 +12,8 @@
 ## SNET Alpha Network ##
 
 * DApp: http://alpha.singularitynet.io
-* Kovan Registry Address: [0x440cf8424fcd7fc2d2ff3a5668c919e93a3d2aab](https://kovan.etherscan.io/address/0x440cf8424fcd7fc2d2ff3a5668c919e93a3d2aab)
-* Kovan Agent Factory Address: [0x1faa8ec70afe4f5ce904da935a6ddf5f3482eedb](https://kovan.etherscan.io/address/0x1faa8ec70afe4f5ce904da935a6ddf5f3482eedb)
+* Kovan Registry Address: [0x2e4b2f2b72402b9b2d6a7851e37c856c329afe38](https://kovan.etherscan.io/address/0x2e4b2f2b72402b9b2d6a7851e37c856c329afe38)
+* Kovan MultiPartyEscrow Address: [0xdd4292864063d0da1f294ac65d74d55a44f4766c]((https://kovan.etherscan.io/address/0x2e4b2f2b72402b9b2d6a7851e37c856c329afe38))
 
 ## Community
 

@@ -1,6 +1,6 @@
 # How to pass call parameters in snet-cli and parameters modifer.
 
-Here we describe how to pass parameters to the service in snet-cli, and we demostrate how to pass binary paramaters via comandline interface.
+Here we describe how to pass parameters to the service in snet-cli, and we demonstrate how to pass binary parameters via command line interface.
 
 ## JSON parameters
 

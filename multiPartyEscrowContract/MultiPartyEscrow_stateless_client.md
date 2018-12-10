@@ -19,7 +19,7 @@ The client receive the following information from the daemon
 (It should be noted that two last values are not in the current version, and we need them only for calculate unspent_amount in the case then current_nonce != blockchain_nonce)
 
 Here we should consider the difficult case, namely the situation in which the server starts close/reopen procedure for the channel.
-The client doesn't need to wait (or recieve at all) confirmation from the blockchain, because it is not in the interest of the server to lie. But the server also doesn't need to wait the confirmation from the blockchain (if he makes sure that the request is mined before expiration of the channel).
+The client doesn't need to wait (or receive at all) confirmation from the blockchain, because it is not in the interest of the server to lie. But the server also doesn't need to wait the confirmation from the blockchain (if he makes sure that the request is mined before expiration of the channel).
 
 Before considering all possible cases, let's define the following parameters
 * blockchain_nonce - nonce of the channel in the blockchain

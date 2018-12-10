@@ -71,9 +71,9 @@ mapping (uint256 => PaymentChannel) public channels;
 
 ```
 
-Comments are selfexplanatory, but few clarifications migth be useful. 
+Comments are self-explanatory, but few clarifications might be useful. 
 
-* The full ID of "atomic" payment channel is "[MPEContractAddress, channelId, nonce]". The MPEContractAdress is the address of MPE contract,
+* The full ID of "atomic" payment channel is "[MPEContractAddress, channelId, nonce]". The MPEContractAddress is the address of MPE contract,
    which is needed to prevent the multi contracts attacks. channelId is a index in the channels mapping. nonce is a part of close/reopen logic.
 * by changing the nonce we effectively close the old channel [MPEContractAddress, channelId, oldNonce]
   and open the new one [MPEContractAddress, channelId, newNonce]. More explanations will be given later.
@@ -99,14 +99,14 @@ function channelClaim(uint256 channelId, uint256 amount, uint8 v, bytes32 r, byt
 ```
 
 It should be noted that v,r,s are parts of the signature.
-The recipent should present the signature for the following message [MPEContractAdress, channelId, nonce, amount].
-It should be noted that [MPEContractAdress, channel_id, nonce] is the full ID of "atomic" channel. 
+The recipient should present the signature for the following message [MPEContractAddress, channelId, nonce, amount].
+It should be noted that [MPEContractAddress, channel_id, nonce] is the full ID of "atomic" channel. 
 
 The recipient has two possibility:
 * (is_sendback==true)  "close" the channel and send remainder back to the sender.
 * (is_sendback==false) "close/reopen". We transfer the claimed amount to the recipient, but instead of sending remainder back to the sender we
-  simple change the nonce of the channel. By doing this we close the old atomic channel [MPEContractAdress, channel_id, old_nonce] 
-  and open the new one [MPEContractAdress, channel_id, new_nonce]
+  simple change the nonce of the channel. By doing this we close the old atomic channel [MPEContractAddress, channel_id, old_nonce] 
+  and open the new one [MPEContractAddress, channel_id, new_nonce]
 
 
 By the following functions the client can extend expiration time and he can add funds to the channel at any time.
@@ -120,16 +120,16 @@ function channelClaimTimeout(uint256 channel_id);
 ```
 
   
-### Usercases 
+### User cases 
 
-#### Simple usercase 
+#### Simple user case 
 
 Informal description:
 
 * Client deposit tokens to the MPE. We could propose to everybody to use MPE as a wallet for all theirs AGI tokens
 * Client select service provider.
-* Client open with choosen payment group. 
-* It should be noted that the client can send requests to any replica from the selected payment group (replicas in one payment groups should share state of the payment channel amoung them)
+* Client open with chosen payment group. 
+* It should be noted that the client can send requests to any replica from the selected payment group (replicas in one payment groups should share state of the payment channel among them)
 * Client starts to send requests to the replicas. With each call he send the signed authorization for the server to "withdraw" the commutative amount of the tokens which are due.
 * At some point server can decide to close/reopen channel in order to fix the profit. At the next call from the client, the server should inform the client that 
 that "nonce" of the channel has been changed (see [state-less logic](MultiPartyEscrow_stateless_client.md) ). 
@@ -151,17 +151,17 @@ We assume that REPLICA1 is from payment group with groupId=group1
 * CLIENT1 send to SERVER1/REPLICA1 authorization SIGNED_BY_CLIENT1(ContractAdress=MPEAdress, channel_id=0, nonce=0, amount=3)
 * CLIENT1 send to SERVER1/REPLICA1 authorization SIGNED_BY_CLIENT1(ContractAdress=MPEAdress, channel_id=0, nonce=0, amount=4)
 * CLIENT1 send to SERVER1/REPLICA1 authorization SIGNED_BY_CLIENT1(ContractAdress=MPEAdress, channel_id=0, nonce=0, amount=5)
-* Server desides to close/reopen the channel (fix the 5 AGI of the profit)
+* Server decides to close/reopen the channel (fix the 5 AGI of the profit)
 * SERVER1 call: channelClaim(channel_id = 0, amount=5, signature = SIGNED_BY_CLIENT1(ContractAdress=MPEAdress, channel_id=0, nonce=0, amount=5), is_sendback=false)
 * MPE add 5 AGI to the balance of SERVER1
 * MPE change the nonce (nonce +=1) and value (value -= 5) in the PaymentChannel: [channel_id = 0, sender=CLIENT1, recipient=SERVER1, replicaId=REPLICA1, value=5 AGI, nonce=1, expiration=expiration0]  
-* Client recieve information that channel has been reopen, and nonce has been changed (see [state-less logic](MultiPartyEscrow_stateless_client.md) )
+* Client receives information that channel has been reopen, and nonce has been changed (see [state-less logic](MultiPartyEscrow_stateless_client.md) )
 * CLIENT1 send to SERVER1/REPLICA1 authorization SIGNED_BY_CLIENT1(ContractAdress=MPEAdress, channel_id=0, nonce=1, amount=1)
 * CLIENT1 send to SERVER1/REPLICA1 authorization SIGNED_BY_CLIENT1(ContractAdress=MPEAdress, channel_id=0, nonce=1, amount=2)
 * CLIENT1 send to SERVER1/REPLICA1 authorization SIGNED_BY_CLIENT1(ContractAdress=MPEAdress, channel_id=0, nonce=1, amount=3)
 * CLIENT1 send to SERVER1/REPLICA1 authorization SIGNED_BY_CLIENT1(ContractAdress=MPEAdress, channel_id=0, nonce=1, amount=4)
-* Client decides to put more funds in the channel and extend it expiration datas.
-* CLEINT1 calls channelExtendAndAddFunds(channel_id=0, new_expiration = now + 1day, amount=10 AGI)
+* Client decides to put more funds in the channel and extend its expiration date.
+* CLIENT1 calls channelExtendAndAddFunds(channel_id=0, new_expiration = now + 1day, amount=10 AGI)
 * MPE change the value and expiration data in the PaymentChannel: [channel_id = 0, sender=CLIENT1, recipient=SERVER1, groupId=group1, value=15 AGI, nonce=1, expiration=expiration1, signer=CLIENT1]
 * MPE subtract 10 AGI from the balance of the CLIENT1
 * CLIENT1 send to SERVER1/REPLICA1 authorization SIGNED_BY_CLIENT1(ContractAdress=MPEAdress, channel_id=0, nonce=1, amount=5)
@@ -181,7 +181,7 @@ We assume that REPLICA1 is from payment group with groupId=group1
 
 ### Remarks
 
-* Service provider can use the same ethereum address for all payment goups or he can use different address. 
+* Service provider can use the same ethereum address for all payment groups or he can use different address. 
 In any case, the daemons very rarely need to send on-chain transactions. It means, that we actually don't need to provide the demons with direct access to the private key. 
 Instead it could be some centralized server to sign the transactions from the daemons (in some cases it even can be done in semi-manual manner by the service owner). We call such server a treasurer server.
 * In the current implementation the client sign off-chain authorization messages with the "signer" private key. It means that the client don't necessary need to sign transaction with his ethereum identity, instead he can use another key pairs.

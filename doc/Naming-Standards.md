@@ -20,7 +20,7 @@ Here `snet` is the organization, `faces` is a prefix for grouping related servic
 Service authors *should* use lowercase alphanumerics, for each of these components. Multiple word components should
 be [slugified with dashes](https://docs.djangoproject.com/en/2.1/ref/utils/#django.utils.text.slugify) ([wikipedia definition of "slug"](https://en.wikipedia.org/wiki/Clean_URL#Slug)) (i.e. dashes should separate the words).
 
-This is analogous to a URL on the web. A domain name is case insensitive, and while a URL path can use captialisation, many web applications
+This is analogous to a URL on the web. A domain name is case insensitive, and while a URL path can use capitalisation, many web applications
 will treat these paths as case insensitive.
 
 ### Internationalisation and UTF-8

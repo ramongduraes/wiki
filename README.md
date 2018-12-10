@@ -33,7 +33,7 @@ It includes information describing how to build and access AI services that are 
 
 SingularityNET is an open and decentralized network of AI services made accessible through 
 the blockchain. AI developers publish their services onto the SingularityNET network where they can be used by anyone with 
-an internet connection. AI deveopers are able to charge for the use of their services using the 
+an internet connection. AI developers are able to charge for the use of their services using the 
 native AGI token -- an ERC20 token hosted on Ethereum.
 
 AI services span the entire gamut of offerings in artificial intelligence and machine learning.
@@ -55,11 +55,11 @@ which can be called using the AGI token.
 
 * **SNET Daemon:** An AI service developer exposes their service to the network by running
 the SNET Daemon alongside their service. The SNET Daemon interacts with the blockchain to 
-facilitate authorization and payment for services and acts as a passthrough for making API
+facilitate authorization and payment for services and acts as a pass-through for making API
 calls to the service.
 
 * **SNET DApp:** The SingularityNET DApp is a front-end for exploring available AI services 
-and inetracting with them through a web-UI. 
+and interacting with them through a web-UI. 
 
 ### Current state of development
 
