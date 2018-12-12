@@ -86,7 +86,7 @@ Sometimes your PR will have merge conflicts with the original repository's maste
     git fetch original_repository_git_url
     ```
 
--   Merge tour changes with the latest changes from the original repository.
+-   Merge your changes with the latest changes on the original repository.
 
     ```bash
     git merge FETCH_HEAD
